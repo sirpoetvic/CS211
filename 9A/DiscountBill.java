@@ -21,6 +21,7 @@ public class DiscountBill extends GroceryBill {
             discountCount++;
             discountAmount += i.getDiscount();
         }
+        
     }
 
 
