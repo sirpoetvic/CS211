@@ -17,7 +17,7 @@ public class DiscountBill extends GroceryBill {
     @Override
     public void add(Item i) {
         super.add(i);
-        if(isPreferred && i.getDiscount() >= 0) {
+        if(isPreferred && i.getDiscount() > 0) {
             discountCount++;
             discountAmount += i.getDiscount();
         }
