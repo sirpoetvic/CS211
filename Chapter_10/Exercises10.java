@@ -1,3 +1,4 @@
+
 import java.util.*;
 /** Name	Course	Quarter		Date		Assignment
  *
@@ -24,8 +25,8 @@ public class Exercises10
          
         // Exercise 10.2
         System.out.println(testListS);
-        //swapPairs(testListS);
-        //swapPairs(testListSempty);
+        swapPairs(testListS);
+        swapPairs(testListSempty);
         System.out.println("10.2 swapPairs: "+ testListS); 
         System.out.println();
         
