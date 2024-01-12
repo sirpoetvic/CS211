@@ -4,7 +4,7 @@ package Chapter_9B_Quiz;
  * {Victor}
  * Winter 2023, C211, William Iverson
  * 1/9/24
- * Chapter 9a Quiz
+ * Chapter 9b Quiz
  * Data structure class for a IPhone
  */
 public class IPhone implements Asset {

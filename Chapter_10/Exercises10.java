@@ -1,11 +1,11 @@
 package Chapter_10;
 import java.util.*;
-/** Name	Course	Quarter		Date		Assignment
- *
- * BC CS211
- * Selected Chapter 10 Exercises
- * 
- * W.P. Iverson, January 2024
+/*
+ * {Victor}
+ * Winter 2023, C211, William Iverson
+ * 1/11/24
+ * Chapter 10
+ * Exercises for Chapter 10
  */
 public class Exercises10
 {
