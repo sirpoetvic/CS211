@@ -23,19 +23,19 @@ public class Exercises10
         testListC.add(new CalendarDate(10,12,1314));  testListC.add(new CalendarDate(10,12,1314));
         testListC.add(new CalendarDate(2,14,2022));  testListC.add(new CalendarDate(3,21,2022));
          
-        // Exercise 10.2
-        System.out.println(testListS);
-        swapPairs(testListS);
-        swapPairs(testListSempty);
-        System.out.println("10.2 swapPairs: "+ testListS); 
-        System.out.println();
+        // // Exercise 10.2
+        // System.out.println(testListS);
+        // swapPairs(testListS);
+        // swapPairs(testListSempty);
+        // System.out.println("10.2 swapPairs: "+ testListS); 
+        // System.out.println();
         
-        // Exercise 10.6
-        System.out.println(testListC);
-        minToFront(testListC);
-        minToFront(testListCempty);
-        System.out.println("10.6 minToFront: " + testListC);
-        System.out.println();
+        // // Exercise 10.6
+        // System.out.println(testListC);
+        // minToFront(testListC);
+        // minToFront(testListCempty);
+        // System.out.println("10.6 minToFront: " + testListC);
+        // System.out.println();
         
         // Exercise 10.7
         System.out.println(testListC);
@@ -44,19 +44,19 @@ public class Exercises10
         System.out.println("10.7 removeDuplicates: " + testListC);
         System.out.println();
         
-        // Exercise 10.12
-        System.out.println(testListS);
-        markLength4(testListS);
-        markLength4(testListSempty);
-        System.out.println("10.12 markLength4: " + testListS);
-        System.out.println();
+        // // Exercise 10.12
+        // System.out.println(testListS);
+        // markLength4(testListS);
+        // markLength4(testListSempty);
+        // System.out.println("10.12 markLength4: " + testListS);
+        // System.out.println();
     
-        // Exercise 10.18
-        System.out.println(testListS);
-        mirror(testListS);
-        mirror(testListSempty);
-        System.out.println("10.18 mirror: " + testListS);
-        System.out.println();
+        // // Exercise 10.18
+        // System.out.println(testListS);
+        // mirror(testListS);
+        // mirror(testListSempty);
+        // System.out.println("10.18 mirror: " + testListS);
+        // System.out.println();
     }
     
     public static void swapPairs(ArrayList<String> arrayList) {

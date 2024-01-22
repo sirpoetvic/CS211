@@ -33,28 +33,28 @@ public class Exercises11
         for (int i=0; i<arrayS.length; i++) testMapSI.put(arrayS[i], i);
          
         // Exercise 11.8
-        System.out.println(testSetS);
-        //System.out.println("maxLength="+maxLength(testSetS));       
+        // System.out.println(testSetS);
+        // System.out.println("maxLength="+maxLength(testSetS));       
         
         // Exercise 11.11 (text pg 759)
-        System.out.println(testSetI);
-        //System.out.println("symmetricSetDifference="+symmetricSetDifference(testSetI,testSetI));
+        // System.out.println(testSetI);
+        // //System.out.println("symmetricSetDifference="+symmetricSetDifference(testSetI,testSetI));
         
-        // Exercise 11.12
-        System.out.println(testListS);
-        //System.out.println("contains3="+contains3(testListS));
+        // // Exercise 11.12
+        // System.out.println(testListS);
+        // //System.out.println("contains3="+contains3(testListS));
         
-        // Exercise 11.13
-        System.out.println(testMapSS);
-        //System.out.println("isUnique="+isUnique(testMapSS));
+        // // Exercise 11.13
+        // System.out.println(testMapSS);
+        // //System.out.println("isUnique="+isUnique(testMapSS));
         
-        // Exercise 11.14
-        System.out.println(testMapSI);
-        //System.out.println("intersect="+intersect(testMapSI,testMapSI));
+        // // Exercise 11.14
+        // System.out.println(testMapSI);
+        // //System.out.println("intersect="+intersect(testMapSI,testMapSI));
         
-        // Exercise 11.15
-        System.out.println(testListI);
-        //System.out.println("maxOccurrences="+maxOccurrences(testListI));
+        // // Exercise 11.15
+        // System.out.println(testListI);
+        // //System.out.println("maxOccurrences="+maxOccurrences(testListI));
     }
 
     public static int maxLength(Set<String> set) {
