@@ -37,8 +37,8 @@ public class Exercises11
         // System.out.println("maxLength="+maxLength(testSetS));       
         
         // Exercise 11.11 (text pg 759)
-        // System.out.println(testSetI);
-        // //System.out.println("symmetricSetDifference="+symmetricSetDifference(testSetI,testSetI));
+        System.out.println(testSetI);
+        System.out.println("symmetricSetDifference="+symmetricSetDifference(testSetI,testSetI));
         
         // // Exercise 11.12
         // System.out.println(testListS);
@@ -71,10 +71,10 @@ public class Exercises11
         return longestLen;
     }
 
-    public static Set<Object> symmetricSetDifference(Set<Object> set1, Set<Object> set2) {
-        Set<Object> returnSet = Collections.<Object>emptySet();
-        Iterator<Object> s = set1.iterator();
-        Object currentKey;
+    public static Set<Integer> symmetricSetDifference(Set<Integer> set1, Set<Integer> set2) {
+        Set<Integer> returnSet = Collections.<Integer>emptySet();
+        Iterator<Integer> s = set1.iterator();
+        Integer currentKey;
         while(s.hasNext()) {
             currentKey = s.next();
             if(!(set2.contains(currentKey))) {
@@ -99,15 +99,15 @@ public class Exercises11
                 }
             }
             else {
-                map.put(currentKey, 0);
+                map.put(currentKey, 1);
             }
         }
         return false;
-    }
+    }   
 
     public static boolean isUnique(Map<String, String> map) {
-        if(map.size() == 0)
-            return false;
+        if(map.isEmpty())
+            return true;
         ArrayList<String> a = new ArrayList<String>();
         for(String value : map.values()) {
             if(a.contains(value))
@@ -118,54 +118,55 @@ public class Exercises11
         return true;
     }
 
-    public static Map<String, Integer> intersect(Map<String, Integer> map1, Map<String, Integer> map2) {
-        Map<String, Integer> returnMap = new HashMap<String, Integer>();
-        ArrayList<String> a = new ArrayList<String>();
-        for(String key : map1.keySet()) {
-            if(a.contains(key))
-                continue;
-            else
-                a.add(key);
-        }
-
-        for(String key : map2.keySet()) {
-            if(a.contains(key)) 
-                continue;
-            else
-                a.remove(key);
-        }
-
-        for(String key : a) {
-            if(map1.get(key).equals(map2.get(key))) {
-                returnMap.put(key, map1.get(key));
+        public static Map<String, Integer> intersect(Map<String, Integer> map1, Map<String, Integer> map2) {
+            Map<String, Integer> returnMap = new HashMap<String, Integer>();
+            ArrayList<String> a = new ArrayList<String>();
+            for(String key : map1.keySet()) {
+                if(a.contains(key))
+                    continue;
+                else
+                    a.add(key);
             }
-        }
 
-        return returnMap;
-    }
-
-    public static int maxOccurrences(List<Integer> list) {
-        if(list.size() == 0)
-            return 0;
-        Integer currentKey;
-        Integer maxKey = 0;
-        Integer maxKeyOccurences = 0;
-        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
-        Iterator<Integer> s = list.iterator();
-
-        while(s.hasNext()) {
-            currentKey = s.next();
-            if(map.containsKey(currentKey))
-                map.put(currentKey, map.get(currentKey) + 1);
-            else
-                map.put(currentKey, 0);
-            if(map.get(currentKey) > maxKeyOccurences) {
-                maxKey = currentKey;
-                maxKeyOccurences = map.get(currentKey);
+            for(String key : map2.keySet()) {
+                if(a.contains(key)) 
+                    continue;
+                else
+                    a.remove(key);
             }
+
+            for(String key : a) {
+                if(map1.get(key).equals(map2.get(key))) {
+                    returnMap.put(key, map1.get(key));
+                }
+            }
+
+            return returnMap;
         }
 
-        return maxKey;
-    }
+        public static int maxOccurrences(List<Integer> list) {
+            if(list.size() == 0)
+                return 0;
+            Integer currentKey;
+            Integer maxKey = 0;
+            Integer maxKeyOccurrences = 1;    
+            Iterator<Integer> s = list.iterator();
+            Map<Integer, Integer> map = new HashMap<>();
+    
+            while(s.hasNext()) {
+                currentKey = s.next();
+                if(map.containsKey(currentKey))
+                    map.put(currentKey, map.get(currentKey) + 1);
+                else
+                    map.put(currentKey, 1);
+                if(map.get(currentKey) > maxKeyOccurrences) {
+                    maxKey = currentKey;
+                    maxKeyOccurrences = map.get(maxKey);
+                }
+            }
+    
+            return maxKeyOccurrences;
+            
+        }
 
 }
