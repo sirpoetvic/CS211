@@ -13,37 +13,41 @@ public class ArrayIntList {
     private int size = 0;       // current number of elements in the list
     
     public static final int DEFAULT_CAPACITY = 10;
+    // EXERCISE CODE GOES HERE, to keep it organized, might be on a Quiz some day???
 
- // EXERCISE CODE GOES HERE, to keep it organized, might be on a Quiz some day???
-    
-    // Exercise #1
-    // solution modified from github.com/Creede15/practice-it/blob/master/chapter-7
-    // DO NOT just copy/paste all the code, as you likely will learn nothing!
-    // if you get stuck on an exercise, maybe peek at "a solution", close, then write your own
-    public int lastIndexOf(int value) {  // changed to non-static, used as member method now
-        for (int i = size - 1; i >= 0; i--) {
-            if (elementData[i] == value) { // changed array to elementData
-                return i;
-            }
-        }
-        return -1;
+    public int removeLast() {
+        if (this.size() == 0)
+            throw new NoSuchElementException();
+        int returnInt = this.get(this.size() - 1);
+        this.remove(this.size() - 1);
+        return returnInt;
     }
-    
-    
-    
-    
-    
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    public void removeFront(int n) {
+        for (int i = 0; i < n; i++) {
+            this.remove(i);
+        }
+    }
+
+    public void removeAll(int n) {
+        while(this.contains(n)) {
+            this.remove(this.indexOf(n))
+        }
+    }
+
+    public void mirror() {
+        int length = this.size();
+        for (int i = length; i > 0; i--) {
+            this.add(this.get(i));
+        }
+    }
+
+    public void stutter() {
+        for (int i = 0; i < this.size(); i += 2) {
+            int value = this.get(i);
+            this.add(i, value);
+        }
+    }
     
    // EXERCISE END.  Class structure below from BJP textbook www.buildingjavaprograms.com
     
