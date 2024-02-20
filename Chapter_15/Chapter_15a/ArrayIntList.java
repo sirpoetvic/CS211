@@ -16,36 +16,36 @@ public class ArrayIntList {
     // EXERCISE CODE GOES HERE, to keep it organized, might be on a Quiz some day???
 
     public int removeLast() {
-        if (this.size() == 0)
+        if (size() == 0)
             throw new NoSuchElementException();
-        int returnInt = this.get(this.size() - 1);
-        this.remove(this.size() - 1);
+        int returnInt = get(size() - 1);
+        remove(size() - 1);
         return returnInt;
     }
 
     public void removeFront(int n) {
         for (int i = 0; i < n; i++) {
-            this.remove(i);
+            remove(i);
         }
     }
 
     public void removeAll(int n) {
-        while(this.contains(n)) {
-            this.remove(this.indexOf(n))
+        while(contains(n)) {
+            remove(indexOf(n))
         }
     }
 
     public void mirror() {
-        int length = this.size();
+        int length = size();
         for (int i = length; i > 0; i--) {
-            this.add(this.get(i));
+            add(get(i));
         }
     }
 
     public void stutter() {
-        for (int i = 0; i < this.size(); i += 2) {
-            int value = this.get(i);
-            this.add(i, value);
+        for (int i = 0; i < size(); i += 2) {
+            int value = get(i);
+            add(i, value);
         }
     }
     
