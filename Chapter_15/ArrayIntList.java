@@ -1,3 +1,11 @@
+
+/*
+ * {Victor}
+ * Winter 2023, C211, William Iverson
+ * 1/16/24
+ * Chapter 15 Quiz
+ * Quiz 15 class
+ */
 /* BJP code modified (by W.P. Iverson, 2024) to import only what's needed
  * to learn about an int array list data structure, like no imports.
  * 
@@ -8,63 +16,32 @@
  * 
 */
 import java.util.NoSuchElementException;
+
 public class ArrayIntList {
-    private int[] elementData;  // list of integers
-    private int size = 0;       // current number of elements in the list
-    
+    private int[] elementData; // list of integers
+    private int size = 0; // current number of elements in the list
+
     public static final int DEFAULT_CAPACITY = 10;
+
     // EXERCISE CODE GOES HERE, to keep it organized, might be on a Quiz some day???
 
     public void removeEvenNumbers() {
         for (int i = 0; i < size(); i++) {
             if (get(i) % 2 == 0) {
                 remove(i);
-                i--;
+                i++;
             }
         }
     }
 
-    public int removeLast() {
-        if (size() == 0)
-            throw new NoSuchElementException();
-        int returnInt = get(size() - 1);
-        remove(size() - 1);
-        return returnInt;
-    }
+    // EXERCISE END. Class structure below from BJP textbook
+    // www.buildingjavaprograms.com
 
-    public void removeFront(int n) {
-        for (int i = 0; i < n; i++) {
-            remove(i);
-        }
-    }
-
-    public void removeAll(int n) {
-        while(contains(n)) {
-            remove(indexOf(n))
-        }
-    }
-
-    public void mirror() {
-        int length = size();
-        for (int i = length; i > 0; i--) {
-            add(get(i));
-        }
-    }
-
-    public void stutter() {
-        for (int i = 0; i < size(); i += 2) {
-            int value = get(i);
-            add(i, value);
-        }
-    }
-    
-   // EXERCISE END.  Class structure below from BJP textbook www.buildingjavaprograms.com
-    
     // post: constructs an empty list of default capacity
     public ArrayIntList() {
         this(DEFAULT_CAPACITY);
     }
-    
+
     // pre : capacity >= 0
     // post: constructs an empty list with the given capacity
     public ArrayIntList(int capacity) {
@@ -73,7 +50,7 @@ public class ArrayIntList {
         }
         elementData = new int[capacity];
     }
-    
+
     // for creating test cases more easily, Reges provided ... arg
     public ArrayIntList(int... elements) {
         this(Math.max(DEFAULT_CAPACITY, elements.length * 2));
@@ -81,7 +58,7 @@ public class ArrayIntList {
             add(n);
         }
     }
-    
+
     // for creating test cases more easily (a dupe of the above constructor)
     public static ArrayIntList withValues(int... elements) {
         ArrayIntList list = new ArrayIntList(Math.max(DEFAULT_CAPACITY, elements.length * 2));
@@ -90,56 +67,57 @@ public class ArrayIntList {
         }
         return list;
     }
-    
+
     // for creating test cases more easily
     public ArrayIntList(int element, boolean notCapacity) {
         this();
         add(element);
     }
-    
+
     // copy constructor; for creating test cases more easily
     public ArrayIntList(ArrayIntList list) {
         this(Math.max(DEFAULT_CAPACITY, list.size() * 2));
         addAll(list);
     }
-    
+
     // pre : size() < capacity (elementData.length)
     // post: appends the given value to the end of the list
     public void add(int value) {
         add(size, value);
     }
-    
+
     // pre: size() < capacity (elementData.length) && 0 <= index <= size()
     // post: inserts the given value at the given index, shifting subsequent
-    //     values right
+    // values right
     public void add(int index, int value) {
         checkIndex(index, 0, size);
         ensureCapacity(size + 1);
-        
+
         for (int i = size; i > index; i--) {
             elementData[i] = elementData[i - 1];
         }
         elementData[index] = value;
         size++;
     }
-    
+
     // post: appends all values in the given list to the end of this list
     public void addAll(ArrayIntList other) {
         for (int i = 0; i < other.size; i++) {
             add(other.elementData[i]);
         }
     }
-    
+
     // post: list is empty
     public void clear() {
         size = 0;
-    } 
-    
-    // post: returns true if the given value is contained in the list, false otherwise
+    }
+
+    // post: returns true if the given value is contained in the list, false
+    // otherwise
     public boolean contains(int value) {
         return indexOf(value) != -1;
-    } 
-    
+    }
+
     // post: ensures that the underlying array has the given capacity; if not,
     // the size is doubled (or more if given capacity is even larger)
     public void ensureCapacity(int capacity) {
@@ -155,8 +133,9 @@ public class ArrayIntList {
             elementData = newList;
         }
     }
-    
-    // returns true if o is an ArrayIntList with the same size and elements as this one
+
+    // returns true if o is an ArrayIntList with the same size and elements as this
+    // one
     public boolean equals(Object o) {
         if (!(o instanceof ArrayIntList)) {
             return false;
@@ -166,30 +145,30 @@ public class ArrayIntList {
         if (this.size != other.size) {
             return false;
         }
-        
+
         for (int i = 0; i < size; i++) {
             if (elementData[i] != other.elementData[i]) {
                 return false;
             }
         }
-        
+
         return true;
     }
-    
+
     // pre : 0 <= index < size()
     // post: returns the integer at the given index in the list
     public int get(int index) {
         checkIndex(index);
         return elementData[index];
     }
-    
+
     // post: returns capacity of this list's underlying array
     public int getCapacity() {
         return elementData.length;
     }
-    
+
     // post : returns the position of the first occurence of the given
-    //      value (-1 if not found)
+    // value (-1 if not found)
     public int indexOf(int value) {
         for (int i = 0; i < size; i++) {
             if (elementData[i] == value) {
@@ -198,17 +177,17 @@ public class ArrayIntList {
         }
         return -1;
     }
-    
+
     // post: returns true if list is empty, false otherwise
     public boolean isEmpty() {
         return size == 0;
     }
-    
+
     // post: returns an iterator for this list
     public ArrayIntListIterator iterator() {
         return new ArrayIntListIterator(this);
-    } 
-    
+    }
+
     // pre : 0 <= index < size()
     // post: removes value at the given index, shifting subsequent values left
     public void remove(int index) {
@@ -218,7 +197,7 @@ public class ArrayIntList {
         }
         size--;
     }
-    
+
     // post: removes all occurrences of the values in the given list from this list
     public void removeAll(ArrayIntList other) {
         int newSize = 0;
@@ -230,28 +209,28 @@ public class ArrayIntList {
             size = newSize;
         }
     }
-    
+
     // pre : 0 <= index < size()
     // post: replaces the integer at the given index with the given value
     public void set(int index, int value) {
         checkIndex(index);
         elementData[index] = value;
-    } 
-    
+    }
+
     // post: returns the current number of elements in the list
     public int size() {
         return size;
     }
-    
+
     // post: returns an array version of the contents of this list
     public int[] toArray() {
-	int[] result = new int[size];
-	for (int i = 0; i < size; i++) {
-	    result[i] = elementData[i];
-	}
+        int[] result = new int[size];
+        for (int i = 0; i < size; i++) {
+            result[i] = elementData[i];
+        }
         return result;
     }
-    
+
     // post: creates a comma-separated, bracketed version of the list
     public String toString() {
         if (size == 0) {
@@ -265,31 +244,30 @@ public class ArrayIntList {
             return result;
         }
     }
-    
+
     // helpers to make sure indexes do not fall out of bounds
     private void checkIndex(int index) {
         checkIndex(index, 0, size - 1);
     }
-    
+
     private void checkIndex(int index, int min, int max) {
         if (!(min <= index && index <= max)) {
-            throw new ArrayIndexOutOfBoundsException("Illegal index " + index + 
+            throw new ArrayIndexOutOfBoundsException("Illegal index " + index +
                     "; must be between " + min + " and " + max + "\n");
         }
     }
-    
-    
+
     // Stuart Reges
     // 4/4/05
     //
     // The ArrayIntListIterator class provides a set of utilities for iterating
     // over an ArrayIntList and possibly removing values from the list.
-    
+
     public static class ArrayIntListIterator {
-        private ArrayIntList list;    // list to iterate over
-        private int position;          // current position within the list
-        private boolean removeOK;      // whether it's okay to remove now
-        
+        private ArrayIntList list; // list to iterate over
+        private int position; // current position within the list
+        private boolean removeOK; // whether it's okay to remove now
+
         // pre : list != null
         // post: constructs an iterator for the given list
         public ArrayIntListIterator(ArrayIntList list) {
@@ -297,12 +275,12 @@ public class ArrayIntList {
             position = 0;
             removeOK = false;
         }
-        
+
         // post: returns true if there are more elements left, false otherwise
         public boolean hasNext() {
             return position < list.size();
         }
-        
+
         // pre : hasNext()
         // post: returns the next element in the iteration
         public int next() {
@@ -313,9 +291,9 @@ public class ArrayIntList {
             removeOK = true;
             return result;
         }
-        
+
         // pre : next() has been called without a call on remove (i.e., at most one
-        //     call per call on next)
+        // call per call on next)
         // post: removes the last element returned by the iterator
         public void remove() {
             if (!removeOK)
