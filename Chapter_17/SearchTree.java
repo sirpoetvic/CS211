@@ -5,6 +5,14 @@
 // modified by W.P. Iverson, to not allow duplicates added
 // added toString()
 // Bellevue College, January 2021
+/*
+ * {Victor}
+ * Winter 2023, C211, William Iverson
+ * 3/4/24
+ * Chapter 17 exercises
+ */
+import java.util.NoSuchElementException;
+
 
 public class SearchTree<E extends Comparable<E>> {
     private SearchTreeNode<E> overallRoot; // root of overall tree
@@ -15,11 +23,101 @@ public class SearchTree<E extends Comparable<E>> {
     }
     
     // WRITE ADDITIONAL METHODS HERE:
-    
+    public boolean isFull() {
+    return isFull(overallRoot);
+}
 
-    
-    
-    
+public boolean isFull(SearchTreeNode<E> root) {
+    if (root == null)
+        return true;
+    else if(root.left == null && root.right != null) {
+        return false;
+    }
+    else if (root.right == null && root.left != null) {
+        return false;
+    }
+    else
+        return isFull(root.left) && isFull(root.right);
+     
+}
+
+public boolean equals2(SearchTree<E> other) {
+    return equals2Help(overallRoot, other.overallRoot);
+}
+
+public boolean equals2Help(SearchTreeNode<E> node1, SearchTreeNode<E> node2) {
+    if(node1 == null && node2 == null)
+        return true;
+    else if((node1 != null && node2 == null) || (node1 == null && node2 != null))
+        return false;
+   
+    return (node1.data.equals(node2.data)) && equals2Help(node1.left, node2.left) 
+        && equals2Help(node1.right, node2.right);
+}
+
+public void removeLeaves() {
+        if (overallRoot == null) 
+        return;
+        if (overallRoot.left == null && overallRoot.right == null) {
+            overallRoot = null;
+            return;
+        } 
+        removeLeavesHelper(overallRoot);
+    }
+
+private void removeLeavesHelper( SearchTreeNode<E> node ) {
+    if ( node == null ) return;
+
+    SearchTreeNode<E> left = node.left;
+    SearchTreeNode<E> right = node.right;
+
+    if ( left != null && left.left == null && left.right == null ) node.left = null;
+    if ( right != null && right.left == null && right.right == null ) node.right = null;
+
+    removeLeavesHelper(node.left);
+    removeLeavesHelper(node.right);
+}
+public void remove(E value) {
+    overallRoot = remove(overallRoot, value);
+}
+
+private SearchTreeNode<E> remove(SearchTreeNode<E> root, E value) {
+    if (root == null) {
+        return null;
+    } else if (root.data.compareTo(value) > 0) {
+        root.left = remove(root.left, value);
+    } else if (root.data.compareTo(value) < 0) {
+        root.right = remove(root.right, value);
+    } else {  // root.data == value; remove this node
+        if (root.right == null) {
+            return root.left;    // no R child; replace w/ L
+        } else if (root.left == null) {
+            return root.right;   // no L child; replace w/ R
+        } else {
+            // both children; replace w/ min from R
+            root.data = getMin(root.right);
+            root.right = remove(root.right, root.data);
+        }
+    }
+    return root;
+}
+
+// Throws a NoSuchElementException if the tree is empty.
+public E getMin() {
+    if (overallRoot == null) {
+        throw new NoSuchElementException();
+    }
+    return getMin(overallRoot);
+}
+
+private E getMin(SearchTreeNode<E> root) {
+    if (root.left == null) {
+        return root.data;
+    } else {
+        return getMin(root.left);
+    }   
+}
+   
     
     
     
